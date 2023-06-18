@@ -29,7 +29,7 @@ class QvaTelClient:
             "destino": destination,
             "mensaje": message
         }
-        response = requests.post(url, data=payload)
+        response = requests.post(url, data=payload, timeout=10)
         return response.json()
 
     def get_message_status(self, message_id):
@@ -44,7 +44,7 @@ class QvaTelClient:
             "api_token": self.api_token,
             "id_msg": message_id
         }
-        response = requests.get(url, params=payload)
+        response = requests.get(url, params=payload, timeout=10)
         return response.json()
 
     def get_account_balance(self):
@@ -57,5 +57,5 @@ class QvaTelClient:
         payload = {
             "api_token": self.api_token
         }
-        response = requests.get(url, params=payload)
+        response = requests.get(url, params=payload, timeout=10)
         return response.json()
