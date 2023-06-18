@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='qvatel_sms_api',
-    version='1.0',
+    version='1.0.2',
     packages=['qvatel'],
     url='https://github.com/yoandysse/qvatel_sms_api.git',
     license='MIT',
