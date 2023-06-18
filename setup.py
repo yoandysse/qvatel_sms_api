@@ -4,7 +4,7 @@ setup(
     name='qvatel_sms_api',
     version='1.0',
     packages=['qvatel'],
-    url='',
+    url='https://github.com/yoandysse/qvatel_sms_api.git',
     license='MIT',
     author='Yoandy Isse',
     author_email='yoandysse@gmail.com',
