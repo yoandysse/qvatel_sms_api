@@ -23,13 +23,20 @@ class QvaTelClient:
         :param message: Contenido del mensaje SMS a enviar.
         :return: Respuesta de la API en formato JSON.
         """
+        if not isinstance(destination, str) or not isinstance(message, str):
+            raise ValueError("Destination and message must be strings")
+
         url = f"{self.base_url}/sms/send"
         payload = {
             "api_token": self.api_token,
             "destino": destination,
             "mensaje": message
         }
-        response = requests.post(url, data=payload)
+        try:
+            response = requests.post(url, data=payload, timeout=10)
+            response.raise_for_status()
+        except requests.RequestException as e:
+            raise Exception(f"Error sending SMS: {e}")
         return response.json()
 
     def get_message_status(self, message_id):
@@ -44,7 +51,11 @@ class QvaTelClient:
             "api_token": self.api_token,
             "id_msg": message_id
         }
-        response = requests.get(url, params=payload)
+        try:
+            response = requests.get(url, params=payload, timeout=10)
+            response.raise_for_status()
+        except requests.RequestException as e:
+            raise Exception(f"Error getting message status: {e}")
         return response.json()
 
     def get_account_balance(self):
@@ -57,5 +68,9 @@ class QvaTelClient:
         payload = {
             "api_token": self.api_token
         }
-        response = requests.get(url, params=payload)
+        try:
+            response = requests.get(url, params=payload, timeout=10)
+            response.raise_for_status()
+        except requests.RequestException as e:
+            raise Exception(f"Error getting account balance: {e}")
         return response.json()

@@ -18,7 +18,7 @@ Esta librería proporciona una interfaz de Python para interactuar con la API de
 Instala la librería usando pip:
 
 ```
-pip install qvatelSMS
+pip install qvatel-sms-api
 
 ```
 
